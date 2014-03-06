@@ -16,9 +16,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  # Give the VM 2GB of RAM
+  # Give the VM a healthy chunk of RAM
   config.vm.provider "virtualbox" do |v|
-        v.memory = 2048
+        v.memory = 4096
   end
 
   # run the main script as a non-priviledged user, i.e. vagrant
