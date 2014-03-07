@@ -28,6 +28,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # If you want to forward additional ports, see link to table in the README file
   config.vm.network :forwarded_port, guest: 80, host: 3180
 
+  # Private networking defined (host-only)
+  config.vm.network :private_network, ip: "172.16.0.2"
+
   # The rest of the comments below are from stock "vagrant init" and kept
   # there for reference
 
