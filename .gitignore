@@ -1,1 +1,3 @@
 .vagrant/
+*.swp
+heat_key.priv
