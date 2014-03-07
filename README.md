@@ -11,6 +11,7 @@ Quick and easy way to set up DevStack using Vagrant with no external dependencie
 1. `git clone https://github.com/elastisys/devstack-vagrant.git && cd devstack-vagrant`
 2. `$EDITOR local.conf # configure DevStack to your liking`
 3. `vagrant up # now get a cup of coffee, it will take a while`
+4. From within the VM: `./additional-configuration.sh # sets up networking, creates a private key, etc.`
 
 If you want to fix something, run commands directly within the DevStack VM, or have made changes to `local.conf` (which you can do right from the host machine, since the file is linked in the VM), ssh in using `vagrant ssh`. You will be logged in as the unprivileged user that installed DevStack and have full control over it.
 
@@ -22,6 +23,6 @@ The idea is very simple:
 2. We clone the [devstack repo](https://github.com/openstack-dev/devstack.git).
 3. We link the `local.conf` file that is in the current directory (which is shared into the VM by Vagrant to the `/vagrant` mount point) to the devstack directory.
 4. We run the devstack `stack.sh` script.
-5. The VM is configured to connect to a NAT, and its port 80 is forwarded to your host machine's port 3180, so you can access the Horizon web interface by visiting [localhost:3180](http://localhost:3180/).
+5. The VM is configured to connect to a NAT, and its port 80 is forwarded to your host machine's port 3180, so you can access the Horizon web interface by visiting [localhost:3180](http://localhost:3180/). The DevStack VM can connect to the VMs it creates using the local 10.0.0.0 network, and you should be able to assign floating IPs that will make the internal VMs reachable from also your host machine.
 
 The beauty of this approach is that it matches (almost?) exactly what you would do manually, and automates just enough to let you focus on the interesting part ([editing local.conf](http://devstack.org/configuration.html) to your liking).
