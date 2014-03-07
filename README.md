@@ -24,5 +24,6 @@ The idea is very simple:
 3. We link the `local.conf` file that is in the current directory (which is shared into the VM by Vagrant to the `/vagrant` mount point) to the devstack directory.
 4. We run the devstack `stack.sh` script.
 5. The VM is configured to connect to a NAT, and its port 80 is forwarded to your host machine's port 3180, so you can access the Horizon web interface by visiting [localhost:3180](http://localhost:3180/). The DevStack VM can connect to the VMs it creates using the local 10.0.0.0 network, and you should be able to assign floating IPs that will make the internal VMs reachable from also your host machine.
+6. We create a private key for usage with Heat, and it winds up in both the home directory of the DevStack VM vagrant user, and in your project directory (the one containing the Vagrantfile on your host machine). This is done in the `additional-configuration.sh` script.
 
 The beauty of this approach is that it matches (almost?) exactly what you would do manually, and automates just enough to let you focus on the interesting part ([editing local.conf](http://devstack.org/configuration.html) to your liking).
